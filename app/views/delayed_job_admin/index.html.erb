@@ -1,4 +1,7 @@
-<p>Delayed::Job.count: <%= Delayed::Job.count %></p>
+<div class="page-header">
+  <h1>delayed_job_admin</h1>
+  <p>Delayed::Job.count: <%= Delayed::Job.count %></p>
+</div>
 
 <table id="jobs">
   <thead>
@@ -16,8 +19,9 @@
       <th>updated_at</th>
     </tr>
   </thead>
+
   <tbody>
-    <% Delayed::Job.all.reverse.each do |job| %>
+    <% Delayed::Job.order(:updated_at).reverse.each do |job| %>
       <tr class="job" id="job-<%= job.id %>">
         <td><%= job.id %></td>
         <td><%= job.priority %></td>
